@@ -1,5 +1,5 @@
 # Halo Streamers
-This is a little sinatra site made for my good friend [Andrew "aWildeOne" Wilde](http://twitch.tv/awildeone) to use on Twitch.tv this is meant as a custom handler for [NiteBot](http://www.nightbot.tv/)
+This is a little sinatra site made for my good friend [Andrew "aWildeOne" Wilde](http://twitch.tv/awildeone) to use on Twitch.tv this is meant as a custom handler for [NightBot](http://www.nightbot.tv/)
 
 It currently displays the live runners from [HaloRuns.com](http://haloruns.com/runners)'s streamer page and outputs a nice little formatted text listing online streamers.
 
