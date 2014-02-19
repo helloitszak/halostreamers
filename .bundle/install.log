@@ -1,8 +1,0 @@
-# Logfile created on 2014-02-18 23:38:46 -0800 by logger.rb/31641
-I, [2014-02-18T23:38:46.838017 #3081]  INFO -- : 0:  mini_portile (0.5.2) from /home/ubercow/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/specifications/mini_portile-0.5.2.gemspec
-I, [2014-02-18T23:38:46.838399 #3081]  INFO -- : 0:  nokogiri (1.6.1) from /home/ubercow/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/specifications/nokogiri-1.6.1.gemspec
-I, [2014-02-18T23:38:46.838673 #3081]  INFO -- : 0:  rack (1.5.2) from /home/ubercow/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/specifications/rack-1.5.2.gemspec
-I, [2014-02-18T23:38:46.838923 #3081]  INFO -- : 0:  rack-protection (1.5.2) from /home/ubercow/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/specifications/rack-protection-1.5.2.gemspec
-I, [2014-02-18T23:38:46.839174 #3081]  INFO -- : 0:  tilt (1.4.1) from /home/ubercow/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/specifications/tilt-1.4.1.gemspec
-I, [2014-02-18T23:38:46.839420 #3081]  INFO -- : 0:  sinatra (1.4.4) from /home/ubercow/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/specifications/sinatra-1.4.4.gemspec
-I, [2014-02-18T23:38:46.847717 #3081]  INFO -- : 0:  bundler (1.5.1) from /home/ubercow/.rbenv/versions/1.9.3-p448/lib/ruby/gems/1.9.1/specifications/bundler-1.5.1.gemspec
