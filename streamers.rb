@@ -68,8 +68,7 @@ class Streamers
 		streamers.push(*Streamers.halo_streamers)
 
 		# Add additional streamers here (shameless self plug)
-		streamers.push("chaoxlol")
-		streamers.push("andy")
+		streamers.push("ubercow")
 		### CONFIGURATION ENEDS HERE ###
 
 
