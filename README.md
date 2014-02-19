@@ -11,7 +11,9 @@ It's pretty easy. It's a simple sinatra application. Run the bundle for the gems
 ## I'm a Halo Runner and I want this on my stream!
 You're also in luck, but not right now. I'm planning on hosting this for public, that should be coming soon™.
 
-## I'm not a Halo Runner but I want something similar for my own list of streams, but I don't have the resources to set it up myself
+## I want something similar for my own list of streams...
+...but I don't have the resources to set it up myself
+
 I have no plans for this, but if there is interest, hit me up on [Twitter](https://www.twitter.com/_ubercow) and I might be able to set something up.
 
 ## Is it cool
