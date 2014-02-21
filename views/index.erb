@@ -6,15 +6,24 @@
 	</p>
 	<p>
 		It currently displays the live runners from <a href="http://haloruns.com/runners">HaloRuns.com</a>'s streamer page and outputs a nice little formatted text listing online streamers.
+		By default, it will only show games with Halo in the title. If this is not desired, check out the parameters section.
 	</p>
 	<h2>How do I use it?</h2>
 	<p>
-		Just point your NightBot at <tt>/halostreamers/streams</tt>
+		Simply add this as the response of your NightBot command: <tt>The Live Halo Runners are $(customapi http://tools.ubercow.net/halostreamers/streams)</tt>
 	</p>
 	<h2>How fast is it</h2>
 	<p>
 		To prevent spamming Twitch's servers, the streamer online test is cached for 5 minutes. Since the data on haloruns hardly ever changes, it's cached for an hour. Therefore changes might not be immediate.
 	</p>
+	<h2>Parameters</h2>
+	<p>You can tweak a few things for the response you get.</p>
+	<p>By default, the list is limited to the top 5 runners. If you want more, you can use the parameter <tt>top</tt>. For example <tt>http://tools.ubercow.net/halostreamers/streams?top=15</tt></p>
+	<p>By default, the list only shows Halo games, if you want to show all games, pass <tt>nofilter=true</tt>. For example <tt>http://tools.ubercow.net/halostreamers/streams?nofilter=true</tt></p>
+	<p>By default, the list is sorted highest view count first, if you want lowest first, pass <tt>sort=asc</tt>. For example <tt>http://tools.ubercow.net/halostreamers/streams?sort=asc</tt></p>
+	<p>You can even be SUPER COOL and chain parameters. This one gives you the top 10 unfiltered streams. <tt>http://tools.ubercow.net/halostreamers/streams?nofilter=true&top=10</tt></p>
+	<h2>Changelog</h2>
+	<p>Feb. 21st 2014 - The script now has filters, examples for how to use parameters, and displays the current game in the output.</p>
 	<h2>Project Information</h2>
 	<p>
 		This is a <a href="http://speedruntools.com">SpeedRunTools</a> project. We make cool tools for speedrunners. Drop by #srt on SRL's IRC or check out our Trello to see what projects we are working on.
@@ -22,4 +31,5 @@
 	<p>
 		The project itself was done by <a href="https://www.twitter.com/_ubercow">Ubercow</a> and is Open Source! Check out the code on <a href="https://github.com/ubercow/halostreamers">GitHub</a>.
 	</p>
+
 </div>

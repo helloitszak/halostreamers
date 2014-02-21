@@ -49,9 +49,7 @@ class Streamers
 
 		rj = JSON.parse(response.body)
 
-		rj["streams"].map do |stream|
-			{ :name => stream["channel"]["display_name"], :viewers => stream["viewers"]}
-		end
+		rj["streams"]
 	end
 
 	class Webapp < Sinatra::Base
@@ -86,7 +84,8 @@ class Streamers
 
 			# Default top X Users to return
 			top = 5
-
+			
+			# Parameters
 			if params['top']
 				top = params['top'].to_i
 			end
@@ -99,10 +98,16 @@ class Streamers
 				streamers.sort! { |x,y| y[:viewers] <=> x[:viewers] }
 			end
 
-			streamers[0, top]
-				.each_with_index
-				.map { |s,i| "#{i+1}: #{s[:name]}" }
-				.join(" ")
+			filter = (params['filter'] or 'halo')
+			if filter and not params['nofilter']
+				streamers.select! { |s| s["channel"]["game"].downcase.include?(filter) }
+			end
+
+			#stream["channel"]["display_name"], :viewers => stream["viewers"]}
+
+			streamers[0, top].each_with_index.map do |stream, index|
+				"#{index+1}: #{stream["channel"]["display_name"]} (#{stream["channel"]["game"]})"
+			end.join(", ")
 		end
 
 		get '/application.css' do
