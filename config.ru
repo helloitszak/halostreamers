@@ -10,4 +10,4 @@ require 'yaml'
 
 require './streamers.rb'
 
-run Streamers::Webapp
+map ('/halostreamers') { run Streamers::Webapp }
