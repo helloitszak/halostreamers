@@ -1,3 +1,5 @@
 source 'https://rubygems.org'
 gem 'nokogiri'
 gem 'sinatra'
+gem 'sass'
+gem 'dalli'

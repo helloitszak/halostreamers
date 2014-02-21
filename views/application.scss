@@ -1,0 +1,44 @@
+* {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+div.main {
+	margin: 0 auto;
+	max-width: 960px;
+	border: solid 1px rgba(0,0,0,0.25);
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2 {
+	padding: 10px;
+	width: 100%;
+	margin: 0;
+}
+
+p {
+	padding-left: 10px;
+}
+
+h1 {
+	background-color: #B1B1B1;
+	border-bottom: solid 1px rgba(0,0,0,0.25);
+}
+
+
+h2:first-of-type {
+	border-top: none;
+}
+
+h2 {
+	border-bottom: solid 1px rgba(0,0,0,0.25);
+	border-top: solid 1px rgba(0,0,0,0.25);
+	background-color: #CDE3FF;
+	font-weight: normal;
+}

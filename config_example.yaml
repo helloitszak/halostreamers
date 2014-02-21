@@ -1,0 +1,10 @@
+twitch_id: whop
+
+halo_streams: true
+additional_streams:
+    - ubercow
+
+caching:
+    halo: 3600
+    twitch: 300
+    server: localhost:12211

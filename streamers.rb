@@ -1,7 +1,6 @@
+CONFIG = YAML::load_file(File.join(File.dirname(File.expand_path(__FILE__)), 'config.yaml'))
 
-
-TWITCH_CLIENT_ID = ""
-
+puts CONFIG
 class Streamers
 	def self.halo_streamers
 		streamers = []
@@ -27,20 +26,20 @@ class Streamers
 	end
 
 	def self.stream_info(users)
-		#puts "DEBUG: Info for #{users.join(", ")}"
+		# puts "DEBUG: Info for #{users.join(", ")}"
 		http = Net::HTTP.new("api.twitch.tv", 443)
 		http.use_ssl = true
 		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 		if users.is_a? Array
-			users = users.join(",")
+			users = users.map(&:downcase).join(",")
 		end
 
 		request = Net::HTTP::Get.new("/kraken/streams?channel=#{users}")
 
 		request.initialize_http_header({
 			"Accept" => "application/vnd.twitchtv.v3+json",
-			"Client-ID" => TWITCH_CLIENT_ID
+			"Client-ID" => CONFIG["twitch_id"]
 		})
 
 		response = http.request(request)
@@ -56,29 +55,37 @@ class Streamers
 		end
 	end
 
-	def self.streamers_list
-		### CONFIGURATION STARTS HERE ###
-		streamers = []
-
-		# Halo Streamers
-		streamers.push(*Streamers.halo_streamers)
-
-		# Add additional streamers here (shameless self plug)
-		streamers.push("ubercow")
-		### CONFIGURATION ENEDS HERE ###
-
-
-		Streamers.stream_info(streamers)
-	end
-
-
 	class Webapp < Sinatra::Base
+		set :cache, Dalli::Client.new(CONFIG["caching"]["server"], {:namespace => CONFIG["caching"]["namespace"]})
+		
 		get '/' do
 			erb :index
 		end
 		
 		get '/streams' do
-			streamers = Streamers.streamers_list
+			streamlist = []
+
+			if CONFIG["halo_streams"]
+				# Halo Streamers
+				halo_streamers ||= settings.cache.fetch("halo_streamers") do
+					halo = Streamers.halo_streamers
+					settings.cache.set("halo_streamers", halo, CONFIG["caching"]["halo"])
+					halo
+				end
+				streamlist.push(*halo_streamers)
+			end
+
+			# Add additional streamers here (shameless self plug)
+			streamlist.push(*CONFIG["additional_streams"])
+
+			# Grab Twitch Information for 
+			streamers ||= settings.cache.fetch("stream_status") do
+				list = streamlist.each_slice(20).map { |s| Streamers.stream_info(s) }.flatten
+				settings.cache.set("stream_status", list, CONFIG["caching"]["twitch"])
+				list
+			end
+
+			# Default top X Users to return
 			top = 5
 
 			if params['top']
@@ -97,8 +104,12 @@ class Streamers
 				.each_with_index
 				.map { |s,i| "#{i+1}: #{s[:name]}" }
 				.join(" ")
+		end
+
+		get '/application.css' do
+			scss :application
+		end
 	end
-end
 end
 
 

@@ -18,3 +18,7 @@
 ## Environment normalisation:
 /.bundle/
 /lib/bundler/man/
+
+
+## UI Things
+/.sass-cache

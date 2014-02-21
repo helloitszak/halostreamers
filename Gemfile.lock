@@ -1,12 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    dalli (2.7.0)
     mini_portile (0.5.2)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
+    sass (3.2.13)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -17,5 +19,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dalli
   nokogiri
+  sass
   sinatra
