@@ -7,4 +7,5 @@ additional_streams:
 caching:
     halo: 3600
     twitch: 300
+    namespace: halostreamers
     server: localhost:12211

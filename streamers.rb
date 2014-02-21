@@ -1,6 +1,5 @@
 CONFIG = YAML::load_file(File.join(File.dirname(File.expand_path(__FILE__)), 'config.yaml'))
 
-puts CONFIG
 class Streamers
 	def self.halo_streamers
 		streamers = []
