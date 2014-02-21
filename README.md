@@ -4,15 +4,14 @@ This is a little sinatra site made for my good friend [Andrew "aWildeOne" Wilde]
 It currently displays the live runners from [HaloRuns.com](http://haloruns.com/runners)'s streamer page and outputs a nice little formatted text listing online streamers.
 
 
-
 ## I want to use this myself!
-It's pretty easy. It's a simple sinatra application. Run the bundle for the gems and the only configuration you'll need is a Twitch TV API Client Key. With a little bit of Ruby knowledge, you can also configure it to add additional streams to the Halo Streamer list, not use the halo streamer list at all.
+It's pretty easy. It's a simple sinatra application that uses memcached. Run the bundle for the gems. Config file is pretty self explanatory. Figure it out.
 
 ## I'm a Halo Runner and I want this on my stream!
-You're also in luck, but not right now. I'm planning on hosting this for public, that should be coming soon™.
+Check [this](http://tools.ubercow.net/halostreamers) shizzle 
 
-## I want something similar for my own list of streams...
-...but I don't have the resources to set it up myself
+## I Want Something Similar... ##
+...but with my own list of streamers and I don't have the resources to set it up myself
 
 I have no plans for this, but if there is interest, hit me up on [Twitter](https://www.twitter.com/_ubercow) and I might be able to set something up.
 
