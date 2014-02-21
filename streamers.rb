@@ -83,20 +83,21 @@ class Streamers
 			end
 
 			# Default top X Users to return
-			top = 5
-			
+			top = streamers.length
+
 			# Parameters
 			if params['top']
 				top = params['top'].to_i
 			end
 
-			if params['sort'] == 'asc'
-				# lowest to highest
-				streamers.sort! { |x,y| x[:viewers] <=> y[:viewers] }
-			else
+			if params['sort'] == 'desc'
 				# highest to lowest
-				streamers.sort! { |x,y| y[:viewers] <=> x[:viewers] }
+				streamers.sort! { |x,y| y["viewers"] <=> x["viewers"] }
+			else
+				# lowest to highest
+				streamers.sort! { |x,y| x["viewers"] <=> y["viewers"] }
 			end
+
 
 			filter = (params['filter'] or 'halo')
 			if filter and not params['nofilter']
@@ -106,7 +107,12 @@ class Streamers
 			#stream["channel"]["display_name"], :viewers => stream["viewers"]}
 
 			streamers[0, top].each_with_index.map do |stream, index|
-				"#{index+1}: #{stream["channel"]["display_name"]} (#{stream["channel"]["game"]})"
+				tag = stream["channel"]["game"]
+				if params['viewers']
+					tag += ", Viewers: #{stream["viewers"]}"
+				end
+
+				"#{index+1}: #{stream["channel"]["display_name"]} (#{tag})"
 			end.join(", ")
 		end
 
