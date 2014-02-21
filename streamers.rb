@@ -1,8 +1,4 @@
-require 'nokogiri'
-require 'net/http'
-require 'open-uri'
-require 'json'
-require 'sinatra/base'
+
 
 TWITCH_CLIENT_ID = ""
 
@@ -74,28 +70,35 @@ class Streamers
 
 		Streamers.stream_info(streamers)
 	end
-end
 
-class Webapp < Sinatra::Base
-	get '/' do
-		streamers = Streamers.streamers_list
-		top = 5
 
-		if params['top']
-			top = params['top'].to_i
+	class Webapp < Sinatra::Base
+		get '/' do
+			erb :index
 		end
+		
+		get '/streams' do
+			streamers = Streamers.streamers_list
+			top = 5
 
-		if params['sort'] == 'asc'
-			# lowest to highest
-			streamers.sort! { |x,y| x[:viewers] <=> y[:viewers] }
-		else
-			# highest to lowest
-			streamers.sort! { |x,y| y[:viewers] <=> x[:viewers] }
-		end
+			if params['top']
+				top = params['top'].to_i
+			end
 
-		streamers[0, top]
-			.each_with_index
-			.map { |s,i| "#{i+1}: #{s[:name]}" }
-			.join(" ")
+			if params['sort'] == 'asc'
+				# lowest to highest
+				streamers.sort! { |x,y| x[:viewers] <=> y[:viewers] }
+			else
+				# highest to lowest
+				streamers.sort! { |x,y| y[:viewers] <=> x[:viewers] }
+			end
+
+			streamers[0, top]
+				.each_with_index
+				.map { |s,i| "#{i+1}: #{s[:name]}" }
+				.join(" ")
 	end
 end
+end
+
+
