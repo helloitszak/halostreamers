@@ -25,13 +25,13 @@ class Streamers
 	end
 
 	def self.stream_info(users)
-		# puts "DEBUG: Info for #{users.join(", ")}"
+		# puts "DEBUG: Info for #{users.join(",")}"
 		http = Net::HTTP.new("api.twitch.tv", 443)
 		http.use_ssl = true
 		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 		if users.is_a? Array
-			users = users.map(&:downcase).join(",")
+			users = users.map { |s| s.strip.downcase }.join(",")
 		end
 
 		request = Net::HTTP::Get.new("/kraken/streams?channel=#{users}")
@@ -54,6 +54,10 @@ class Streamers
 
 	class Webapp < Sinatra::Base
 		set :cache, Dalli::Client.new(CONFIG["caching"]["server"], {:namespace => CONFIG["caching"]["namespace"]})
+
+		configure do
+			settings.cache.flush
+		end
 		
 		get '/' do
 			erb :index
